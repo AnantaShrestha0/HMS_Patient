@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!--=== Coding by CodingLab | www.codinglabweb.com === -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" th:href="@{/css/registrationstyle.css}">
+     
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <title>Responsive Regisration Form </title> 
+</head>
+<body>
+    <div class="container">
+        <header>Registration</header>
+
+        <form action="/patient/registration" method="post" th:object="${userObject}">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Personal Details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Full Name</label>
+                            <input type="text" placeholder="Enter your name" name="patientPersonalDetailsModel.fullname" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Date of Birth</label>
+                            <input type="date" placeholder="Enter birth date" name="patientPersonalDetailsModel.dob" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Email</label>
+                            <input type="text" placeholder="Enter your email" name="patientPersonalDetailsModel.gmail" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Mobile Number</label>
+                            <input type="number" placeholder="Enter mobile number" name="patientPersonalDetailsModel.phonenumber" required>
+                        </div>
+                        <div class="input-field">
+                            <label>Address</label>
+                            <input type="text" placeholder="Enter your address" name="patientPersonalDetailsModel.address" required>
+                        </div>
+
+
+
+                        <div class="input-field">
+                            <label>Pass Medical History</label>
+                            <select name="patientPersonalDetailsModel.pastmedicalhis" required>
+                                <option disabled selected>Select</option>
+                                <option>YES</option>
+                                <option>NO</option>
+                            </select>
+                        </div>
+
+                      
+
+                     
+
+                       
+                    </div>
+                </div>
+
+                <div class="details ID">
+                    <span class="title">Medical Details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Height</label>
+                            <input type="text" placeholder="Enter your height" name="patientMedicalDetailsModel.height"  required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Weight</label>
+                            <input type="number" placeholder="Enter your weight" name="patientMedicalDetailsModel.weight" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Gender</label>
+                            <select name="patientMedicalDetailsModel.gender"required>
+                                <option disabled selected>Select gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Blood Pressure</label>
+                            <input type="text" placeholder="Enter your B.P." name="patientMedicalDetailsModel.bloodpressure" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Bload Group</label>
+                            <input type="text" placeholder="Enter your bload group" name="patientMedicalDetailsModel.bloodgroup" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Sugar Level</label>
+                            <input type="number" placeholder="Enter your sugar level" name="patientMedicalDetailsModel.sugarlevel"  required>
+                        </div>
+
+                        
+                      
+                    </div>
+                    
+                    
+                    
+                   
+
+                    
+
+                   
+                   
+                       
+                    
+            
+            
+
+                    <div class="buttons">
+                        
+                        <button class="sumbit">
+                            <span class="btnText">Submit</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                    </div>
+                </div> 
+            </div>
+             <input type="hidden" th:field="*{id}">
+             <input type="hidden" th:field="*{email}">
+             <input type="hidden" th:field="*{password}">
+
+            
+        </form>
+    </div>
+
+</body>
+</html>
