@@ -119,9 +119,9 @@
       <div class="row">
         <div class="col">
           <div class="ko">
-        
+         
             <h4>
-              APPOINTMENT<span> REQUEST</span>
+              APPOINTMENT<span> ACCEPTED</span>
             </h4>
             
    
@@ -134,22 +134,25 @@
     <th>Action</th>
     </tr>
     </thead>
-    
-    <tbody>
- <tr th:each="appointment:${appointmentList}">
-    <td>[[${appointment.doctor_name}]]</td>
-    <td>[[${appointment.patient_name}]]</td>
-    <td>[[${appointment.appointmentdate}]]</td>
+      
+   <tbody>
+ <tr th:each="appointment : ${appointmentList}">
+    <td th:text="${appointment.doctor_name}"></td>
+    <td th:text="${appointment.patient_name}"></td>
+    <td th:text="${appointment.appointmentdate}"></td>
     <td>
-    <!--  <a th:href="@{/department/edit(id=${d.id})}"><input type="submit" value="Edit" class="btn btn-success"></a>-->
-   <a th:href="@{/appointmentCancel(id=${appointment.id})}"><input type="submit" value="Camcel" class="btn btn-danger"></a>
-    <!-- <a th:href="@{/department/view(id=${d.id})}"><input type="submit" value="View" class="btn btn-primary"></a>-->
+     
+        <a th:href="@{/appointmentPatientCanceled(id=${appointment.id})}">
+            <input type="submit" value="Cancel" class="btn btn-danger">
+        </a>
+        
+
     </td>
-    </tr>
- 
-   
+</tr>
+  
     
     </tbody>
+    
     
     
     </table>

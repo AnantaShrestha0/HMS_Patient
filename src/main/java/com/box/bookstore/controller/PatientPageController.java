@@ -103,6 +103,7 @@ public class PatientPageController {
 		
 	}
 	
+	
 
 	@GetMapping("/appointmentAcceptedList")
 	public String getAppointmentAcceptedList(Model model,HttpSession httpSession) {
@@ -116,10 +117,35 @@ public class PatientPageController {
 		List<AppointmentModel> appointment=appointmentService.getAllAppointmentAcceptedByPatient(p.getId());
 		model.addAttribute("appointmentAcceptedListIndicator","active");
 		model.addAttribute("appointmentList",appointment );
+		return "appointmentAcceptList";
+		
+	}
+	
+
+	
+	@GetMapping("/appointmentCancelList")
+	public String getAppointmentCancelList(Model model,HttpSession httpSession) {
+		
+		if(httpSession.getAttribute("validuser")==null) {
+			return "login";
+		}
+		
+		PatientModel p=(PatientModel) httpSession.getAttribute("validuser");
+
+		List<AppointmentModel> appointment=appointmentService.getAllAppointmentCancelByPatient(p.getId());
+		model.addAttribute("appointmentCancelListIndicator","active");
+		model.addAttribute("appointmentList",appointment );
 	//	model.addAttribute("patient",appointment);
 		
-		return "appointmentlist";
+		return "appointmentCanceledList";
 		
+	}
+	
+	@GetMapping("/patientContact")
+	public String getPatientContact(@RequestParam int id,Model model) {
+		String gmail=doctorRestController.getDoctorGmail(id);
+		model.addAttribute("gmail", gmail);
+		return "patient_contact";
 	}
 	
 	

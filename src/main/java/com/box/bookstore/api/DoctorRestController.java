@@ -29,4 +29,12 @@ public class DoctorRestController {
 		String doctorName=restTemplate.getForObject(url,String.class);
 		return doctorName;
 	}
+	
+	@GetMapping("/api/doctorGmail")
+	public String getDoctorGmail(int id) {
+		String url="http://localhost:8081/api/doctorGmail/"+id;
+		RestTemplate restTemplate=new RestTemplate();
+		String doctorGmail=restTemplate.getForObject(url,String.class);
+		return doctorGmail;
+	}
 }

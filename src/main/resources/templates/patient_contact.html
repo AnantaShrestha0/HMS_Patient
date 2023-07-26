@@ -33,73 +33,11 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
-  
-  <style type="text/css">
-  .cen{
-  text-align: center;
-  }
-  
-.book_section h3::before{
-   content:"";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 75px;
-    height: 2px;
-    background-color: #00c6a9;
-}
-
-.book_section .ko {
-  padding: 35px 45px;
-  -webkit-box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.07);
-  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.07);
-}
-
-.book_section .ko label {
-  color: #000000;
-}
-
-.book_section .ko .custom-input {
-  width: 100%;
-  background-color: transparent;
-  border: 1px solid #00c6a9;
-  height: 45px;
-  outline: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  border-radius: 5px;
-  padding: 0 15px;
-}
-
-.book_section .ko .custom-input::-webkit-input-placeholder {
-  color: #00c6a9;
-}
-
-.book_section .ko .custom-input:-ms-input-placeholder {
-  color: #00c6a9;
-}
-
-.book_section .ko .custom-input::-ms-input-placeholder {
-  color: #00c6a9;
-}
-
-.book_section .ko .custom-input::placeholder {
-  color: #00c6a9;
-}
-
-.book_section .ko #inputDate {
-  color: #00c6a9;
-}
-
-.book_section .ko #inputDate input {
-  color: #00c6a9;
-}
-
-
-  </style>
 </head>
 
 <body class="sub_page">
+
+
 
   <div class="hero_area">
     <!-- header section strats -->
@@ -113,57 +51,48 @@
 
 
     <!-- book section-->
-
-  <section class="book_section layout_padding">
+  <section class="contact_section layout_padding-bottom">
     <div class="container">
+      <div class="heading_container">
+        <h2>
+          	Message To Doctor
+        </h2>
+      </div>
       <div class="row">
-        <div class="col">
-          <div class="ko">
-        
-            <h4>
-              APPOINTMENT<span> REQUEST</span>
-            </h4>
-            
-   
-            <table class="table table-stripted">
-        <thead>
-    <tr>
-    <th>Doctor Name</th>
-    <th>Patient Name</th>
-    <th>Time</th>
-    <th>Action</th>
-    </tr>
-    </thead>
-    
-    <tbody>
- <tr th:each="appointment:${appointmentList}">
-    <td>[[${appointment.doctor_name}]]</td>
-    <td>[[${appointment.patient_name}]]</td>
-    <td>[[${appointment.appointmentdate}]]</td>
-    <td>
-    <!--  <a th:href="@{/department/edit(id=${d.id})}"><input type="submit" value="Edit" class="btn btn-success"></a>-->
-   <a th:href="@{/appointmentCancel(id=${appointment.id})}"><input type="submit" value="Camcel" class="btn btn-danger"></a>
-    <!-- <a th:href="@{/department/view(id=${d.id})}"><input type="submit" value="View" class="btn btn-primary"></a>-->
-    </td>
-    </tr>
- 
-   
-    
-    </tbody>
-    
-    
-    </table>
-            
-          <!-- <input type="hidden" name="patientid" th:value="${id}">-->
- 
-            
-             
-         
+        <div class="col-md-7">
+          <div class="form_container">
+            <form action="/patientContact" method="post">
+              <div>
+                <input type="email" th:value="${gmail}" placeholder="Email" name="email"  required="required"/>
+              </div>
+              <div>
+                <input type="text" placeholder="Subject" name="subject" required="required" />
+              </div>
+              
+             <!-- <div>
+                <input type="text" placeholder="Phone Number" name="phonenumber" required="required"/>
+              </div> -->
+              
+              <div>
+                <input type="text" class="message-box" placeholder="Message" name="message" required="required" />
+              </div>
+              <div class="btn_box">
+              <!-- <button>
+                  SEND
+                </button>-->
+                <input type="submit" value="SEND">
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="img-box">
+            <img src="images/contact-img.jpg" alt="">
           </div>
         </div>
       </div>
     </div>
-  </section> 
+  </section>
 
 
   <!-- end book section -->

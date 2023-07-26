@@ -2,6 +2,7 @@ package com.box.bookstore.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,4 +52,18 @@ public class ContactController {
 		mailUtil.sendEmail(toEmail,subject,Message);
 		return "redirect:/";
 	}
+	
+	
+	@PostMapping("/patientContact")
+	public String postPatientContact(@RequestParam String email,@RequestParam String subject,@RequestParam String message,Model model,HttpSession httpSession) {
+		
+		if(httpSession.getAttribute("validuser")==null) {
+			return "login";
+		}
+		
+		mailUtil.sendEmail(email,subject,message);
+		model.addAttribute("gmail", email);
+		return "patient_contact";
+	}
+	
 }

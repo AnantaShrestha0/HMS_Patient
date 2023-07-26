@@ -22,4 +22,16 @@ public interface AppointmentService {
 	
 	List<AppointmentModel> getAllAppointmentAcceptedByPatient(int id);
 	
+	List<AppointmentModel> getAllAppointmentRequestByDoctorID(int id);
+	
+	List<AppointmentModel> getAllAppointmentAcceptedByDoctorId(int id);
+	
+	List<AppointmentModel> getAllAppointmentCancelListByDoctorId(int id);
+	
+	void patientCancelFunction(int id);
+	
+	void changeStatusOfAppointment(int id,String status);
+	
+
+	
 }

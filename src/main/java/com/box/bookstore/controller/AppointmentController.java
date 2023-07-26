@@ -41,10 +41,11 @@ public class AppointmentController {
 		PatientModel p=(PatientModel) httpSession.getAttribute("validuser");
 		int id=p.getId();
 		appointmentModel.setPatientid(id);
-		String sid=appointmentModel.getDoctor_id();
+		String sid=appointmentModel.getDoctorId();
 		int iid=Integer.parseInt(sid);
 		appointmentModel.setDoctor_name(doctorRestController.getDoctorName(iid));
 		appointmentModel.setAppointmentStatus("pending");
+		appointmentModel.setPatientCancel("nothing");
 		appointmentService.addAppointment(appointmentModel);
 		return "redirect:/patientinterface";
 	}
@@ -61,7 +62,20 @@ public class AppointmentController {
 		
 		appointmentService.deleteAppointment(id);
 	
-		return "redirect:/appointmentlist";
+		return "redirect:/appointmentCancelList";
+		
+	}
+	@GetMapping("/appointmentPatientCanceled")
+	public String getAppointmentPatientcanceled(@RequestParam int id,Model model,HttpSession httpSession) {
+		
+		if(httpSession.getAttribute("validuser")==null) {
+			return "login";
+		}
+	
+		
+		appointmentService.patientCancelFunction(id);
+	
+		return "redirect:/appointmentAcceptedList";
 		
 	}
 }

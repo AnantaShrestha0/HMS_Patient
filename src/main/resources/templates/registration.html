@@ -12,7 +12,58 @@
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
-    <title>Responsive Regisration Form </title> 
+    <title>Responsive Regisration Form </title>
+    
+    <style type="text/css">
+    
+    .container form{
+    position: relative;
+    margin-top: 16px;
+    min-height: 300px;
+    background-color: #fff;
+    overflow: hidden;
+}
+.container form .form{
+    position: absolute;
+    background-color: #fff;
+    transition: 0.3s ease;
+}
+.container form .form.second{
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(100%);
+}
+form.secActive .form.second{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+}
+form.secActive .form.first{
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+}
+.container form .title{
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 6px 0;
+    color: #333;
+}
+.container form .fields{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+form .fields .input-field{
+    display: flex;
+    width: calc(100% / 3 - 15px);
+    flex-direction: column;
+    margin: 4px 0;
+}
+    </style> 
 </head>
 <body>
     <div class="container">
@@ -51,11 +102,11 @@
 
 
                         <div class="input-field">
-                            <label>Pass Medical History</label>
-                            <select name="patientPersonalDetailsModel.pastmedicalhis" required>
+                            <label>Gender</label>
+                            <select name="patientPersonalDetailsModel.gender" required>
                                 <option disabled selected>Select</option>
-                                <option>YES</option>
-                                <option>NO</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
                             </select>
                         </div>
 
@@ -67,8 +118,8 @@
                     </div>
                 </div>
 
-                <div class="details ID">
-                    <span class="title">Medical Details</span>
+               <!--   <div class="details ID">-->
+             <!--        <span class="title">Medical Details</span>
 
                     <div class="fields">
                         <div class="input-field">
@@ -108,7 +159,7 @@
 
                         
                       
-                    </div>
+                    </div>-->
                     
                     
                     
@@ -130,7 +181,7 @@
                             <i class="uil uil-navigator"></i>
                         </button>
                     </div>
-                </div> 
+              <!--   </div> -->
             </div>
              <input type="hidden" th:field="*{id}">
              <input type="hidden" th:field="*{email}">

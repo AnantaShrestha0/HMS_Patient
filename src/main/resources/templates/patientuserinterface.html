@@ -65,7 +65,7 @@
               </div>
               <div class="form-group col-lg-4">
                 <label for="inputDoctorName">Doctor's Name</label>
-                <select name="doctor_id" class="form-control wide" id="inputDoctorName" required="required">
+                <select name="doctorId" class="form-control wide" id="inputDoctorName" required="required">
 
 							 <option th:each="doctor : ${doctorList}" th:value="${doctor.id}" th:text="${doctor.doctorPersonalDetailsModel.fullname}" ></option>
                 </select>
@@ -78,20 +78,47 @@
                   <option value="Normal distribution ">Normal distribution </option>
                 </select>
               </div>-->
-              <div class="form-group col-lg-4">
-                <label for="inputPatientName">Email</label>
-                <input type="email" class="form-control" id="inputPatientName" placeholder="" name="email" required="required">
-              </div>
-            </div>
-            <div class="form-row ">
+            
+            
               <div class="form-group col-lg-4">
                 <label for="inputPhone">Phone Number</label>
                 <input type="number" class="form-control" id="inputPhone" placeholder="XXXXXXXXXX" name="phonenumber">
               </div>
+              
+                <div class="form-group col-lg-4">
+                <label for="inputPatientName">Male Female</label>
+                <select name="gender" class="form-control wide" id="inputDoctorName" required="required">
+                              <option value=""></option>
+							 <option value="male">Male</option>
+							 <option value="female">Female</option>
+                </select>
+              </div>
+              
+              
+                <div class="form-group col-lg-4">
+                <label for="inputPatientName">Past Medical History</label>
+                <select name="passMedicalHistory" class="form-control wide" id="inputDoctorName" required="required">
+                              <option value=""></option>
+							 <option value="yes">YES</option>
+							 <option value="no">NO</option>
+                </select>
+              </div>
+           
+            
               <div class="form-group col-lg-4">
                 <label for="inputSymptoms">Symptoms</label>
                 <input type="text" class="form-control" id="inputSymptoms" placeholder="" name="symptoms">
               </div>
+              
+              <div class="form-group col-lg-4">
+                <label for="inputSymptoms">Blood Pressure</label>
+                <input type="text" class="form-control" id="inputSymptoms" placeholder="" name="bloodPressure">
+              </div>
+               <div class="form-group col-lg-4">
+                <label for="inputSymptoms">Age</label>
+                <input type="number" class="form-control" id="inputSymptoms" placeholder="" name="age">
+              </div>
+              
               <div class="form-group col-lg-4">
                 <label for="inputDate">Choose Date </label>
                 <div class="input-group date" id="inputDate" data-date-format="mm-dd-yyyy">
@@ -102,6 +129,7 @@
                 </div>
               </div>
             </div>
+            
             
           
           <!-- <input type="hidden" name="patientid" th:value="${id}">-->

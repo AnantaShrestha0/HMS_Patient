@@ -41,6 +41,7 @@ public class PatientController {
 //			return "redirect:/patientinterface/"+n;
 //			redirectAttributes.addFlashAttribute("patientobj",p);
 			session.setAttribute("validuser",p);
+			session.setMaxInactiveInterval(10000000);
 			return "redirect:/patientinterface";
 		}
 		}catch(Exception e) {

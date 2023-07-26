@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.box.bookstore.model.AppointmentModel;
 import com.box.bookstore.repo.Appointmentrepo;
@@ -75,6 +76,7 @@ public class AppointmentServiceImpl implements AppointmentService{
 		for (AppointmentModel appointment:appointmentList) {
 			String check="canceled";
 			String appointmentCan=appointment.getAppointmentStatus();
+		
 			if(appointmentCan.equals(check)) {
 				appointmentCancel.add(appointment);
 			}
@@ -94,12 +96,96 @@ public class AppointmentServiceImpl implements AppointmentService{
 		for (AppointmentModel appointment:appointmentList) {
 			String check="accepted";
 			String appointmentAccept=appointment.getAppointmentStatus();
+			String checkcancel="cancel";
+			String appointmentCancel=appointment.getPatientCancel();
+			
 			if(appointmentAccept.equals(check)) {
+				
+				if(!(appointmentCancel.equals(checkcancel))) {
+					
 				appointmentAccepted.add(appointment);
+				
+				}
 			}
 		}
 		
 		return appointmentAccepted;
 	}
+
+	@Override
+	public List<AppointmentModel> getAllAppointmentRequestByDoctorID(int id) {
+		String doc_id=Integer.toString(id);
+		List<AppointmentModel> appointmentList=appointmentrepo.findByDoctorId(doc_id);
+		List<AppointmentModel> appointmentRequest=new ArrayList<>();
+		for(AppointmentModel appointment:appointmentList) {
+			String check="pending";
+			String status=appointment.getAppointmentStatus();
+//			String checkCancel="cancel";
+//			String cancelStatus=appointment.get
+			if(status.equals(check)) {
+				appointmentRequest.add(appointment);
+			}
+		}
+		return appointmentRequest;
+	}
+
+	@Override
+	public List<AppointmentModel> getAllAppointmentAcceptedByDoctorId(int id) {
+
+		String doc_id=Integer.toString(id);
+		List<AppointmentModel> appointmentList=appointmentrepo.findByDoctorId(doc_id);
+		List<AppointmentModel> appointmentAccepted=new ArrayList<>();
+		for(AppointmentModel appointment:appointmentList) {
+			String check="accepted";
+			String status=appointment.getAppointmentStatus();
+			String cancelCheck="cancel";
+			String patientCancelStatus=appointment.getPatientCancel();
+			if(status.equals(check)) {
+				if(!(patientCancelStatus.equals(cancelCheck))) {
+				appointmentAccepted.add(appointment);
+				}
+			}
+		}
+		return appointmentAccepted;
+	}
+	
+	@Override
+	public List<AppointmentModel> getAllAppointmentCancelListByDoctorId(int id){
+		String doc_id=Integer.toString(id);
+		List<AppointmentModel> appointmentList=appointmentrepo.findByDoctorId(doc_id);
+		List<AppointmentModel> appointmentCancel=new ArrayList<>();
+		for(AppointmentModel appointment:appointmentList) {
+			
+			String cancelCheck="cancel";
+			String patientCancelStatus=appointment.getPatientCancel();
+		
+		     if(patientCancelStatus.equals(cancelCheck)){
+				appointmentCancel.add(appointment);
+				
+			}
+		}
+		return appointmentCancel;
+	}
+
+	@Override
+	public void patientCancelFunction(@RequestParam int id) {
+		// TODO Auto-generated method stub
+		AppointmentModel appointmentModel=appointmentrepo.findById(id).get();
+		appointmentModel.setPatientCancel("cancel");
+		appointmentrepo.save(appointmentModel);
+		
+		
+	}
+
+	@Override
+	public void changeStatusOfAppointment(int id,String status) {
+		// TODO Auto-generated method stub
+		AppointmentModel appointmentModel=appointmentrepo.findById(id).get();
+		appointmentModel.setAppointmentStatus(status);
+		appointmentrepo.save(appointmentModel);
+		
+		
+	}
+
 
 }
