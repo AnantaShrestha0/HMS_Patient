@@ -52,8 +52,22 @@ public class AppointmentController {
 	
 
 	
+	@GetMapping("/appointmentRequestCancel")
+	public String getAppointmentRequestCancel(@RequestParam int id,Model model,HttpSession httpSession) {
+		
+		if(httpSession.getAttribute("validuser")==null) {
+			return "login";
+		}
+	
+		
+		appointmentService.deleteAppointment(id);
+	
+		return "redirect:/appointmentRequestList";
+		
+	}
+	
 	@GetMapping("/appointmentCancel")
-	public String getAppointmentcancel(@RequestParam int id,Model model,HttpSession httpSession) {
+	public String getAppointmentCancel(@RequestParam int id,Model model,HttpSession httpSession) {
 		
 		if(httpSession.getAttribute("validuser")==null) {
 			return "login";
@@ -78,4 +92,53 @@ public class AppointmentController {
 		return "redirect:/appointmentAcceptedList";
 		
 	}
+	
+	@GetMapping("/appointmentViewDetailsForRequest")
+	public String getAppointmentViewDetailsForRequest(@RequestParam int id,Model model,HttpSession httpSession) {
+		
+		if(httpSession.getAttribute("validuser")==null) {
+			return "login";
+		}
+		
+		model.addAttribute("appointmentRequestListIndicator","active");
+		model.addAttribute("appointmentObject", appointmentService.getAppointmentById(id));
+		return "appointment_view_details_for_request";
+	}
+	
+	@GetMapping("/appointmentViewDetailsForAccepted")
+	public String getAppointmentViewDetailsForAccpted(@RequestParam int id,Model model,HttpSession httpSession) {
+		
+		if(httpSession.getAttribute("validuser")==null) {
+			return "login";
+		}
+		
+		model.addAttribute("appointmentAcceptedListIndicator","active");
+		model.addAttribute("appointmentObject", appointmentService.getAppointmentById(id));
+		return "appointment_view_details_for_accepted";
+	}
+	
+	@GetMapping("/appointmentViewDetailsForCancel")
+	public String getAppointmentViewDetailsForCancel(@RequestParam int id,Model model,HttpSession httpSession) {
+		
+		if(httpSession.getAttribute("validuser")==null) {
+			return "login";
+		}
+		
+		model.addAttribute("appointmentCancelListIndicator","active");
+		model.addAttribute("appointmentObject", appointmentService.getAppointmentById(id));
+		return "appointment_view_details_for_cancel";
+	}
+	
+	@GetMapping("/appointmentAcceptedContactToDoctor")
+	public String getAppointmentAcceptedContactToDoctor(@RequestParam int id,Model model,HttpSession httpSession) {
+		
+		if(httpSession.getAttribute("validuser")==null) {
+			return "login";
+		}
+		
+		model.addAttribute("appointmentAcceptedListIndicator","active");
+		model.addAttribute("doctorObject", doctorRestController.getDoctor(id));
+		return "appointment_view_doctor_contact";
+	}
+	
 }

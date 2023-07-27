@@ -142,6 +142,7 @@
     <td>[[${appointment.appointmentdate}]]</td>
     <td>
     <!--  <a th:href="@{/department/edit(id=${d.id})}"><input type="submit" value="Edit" class="btn btn-success"></a>-->
+    <a th:href="@{/appointmentViewDetailsForCancel(id=${appointment.id})}"><input type="submit" value="View" class="btn btn-primary"></a>
    <a th:href="@{/appointmentCancel(id=${appointment.id})}"><input type="submit" value="Ok" class="btn btn-success"></a>
     <!-- <a th:href="@{/department/view(id=${d.id})}"><input type="submit" value="View" class="btn btn-primary"></a>-->
     </td>

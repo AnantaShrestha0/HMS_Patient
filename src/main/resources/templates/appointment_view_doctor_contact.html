@@ -35,21 +35,17 @@
   <link href="css/responsive.css" rel="stylesheet" />
   
   <style type="text/css">
-  .cen{
-  text-align: center;
-  }
   
-.book_section h3::before{
-   content:"";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 75px;
-    height: 2px;
-    background-color: #00c6a9;
-}
-
-.book_section .ko {
+  .centered {
+            
+            text-align: center;
+        }
+        
+       .leftAlign{
+       text-align: left;
+       }
+        
+        .book_section .ko {
   padding: 35px 45px;
   -webkit-box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.07);
   box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.07);
@@ -94,12 +90,12 @@
 .book_section .ko #inputDate input {
   color: #00c6a9;
 }
-
-
   </style>
 </head>
 
 <body class="sub_page">
+
+
 
   <div class="hero_area">
     <!-- header section strats -->
@@ -113,65 +109,64 @@
 
 
     <!-- book section-->
+    <div class="ko">
+     <div class="centered">
 
-  <section class="book_section layout_padding">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <div class="ko">
-         
-            <h4>
-              APPOINTMENT<span> ACCEPTED</span>
-            </h4>
-            
-   
-            <table class="table table-stripted">
-        <thead>
-    <tr>
-    <th>Doctor Name</th>
-    <th>Patient Name</th>
-    <th>Time</th>
-    <th>Action</th>
-    </tr>
-    </thead>
-      
-   <tbody>
- <tr th:each="appointment : ${appointmentList}">
-    <td th:text="${appointment.doctor_name}"></td>
-    <td th:text="${appointment.patient_name}"></td>
-    <td th:text="${appointment.appointmentdate}"></td>
-    <td>
-    <a th:href="@{/appointmentViewDetailsForAccepted(id=${appointment.id})}">
-            <input type="submit" value="View" class="btn btn-primary"></a>
-            
-                <a th:href="@{/appointmentAcceptedContactToDoctor(id=${appointment.doctorId})}">
-            <input type="submit" value="Contact" class="btn btn-success"></a>
-            
-        <a th:href="@{/appointmentPatientCanceled(id=${appointment.id})}">
-            <input type="submit" value="Cancel" class="btn btn-danger">
-        </a>
-        
+		<div class="card-body">
+		
+				<form action="" th:object="${doctorObject}">
+				
+				   <div class="row p-2">
+						<div class="col-4">Doctor Id</div>
+						<div class="col-6">
+							<input type="text" th:field="*{id}" readonly="readonly" name="lname" class="form-control">
 
-    </td>
-</tr>
-  
-    
-    </tbody>
-    
-    
-    
-    </table>
-            
-          <!-- <input type="hidden" name="patientid" th:value="${id}">-->
- 
-            
-             
-         
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> 
+
+						</div>
+					</div>
+					
+					<div class="row p-2">
+						<div class="col-4">Gmail</div>
+						<div class="col-6">
+							<input type="text" th:field="*{doctorPersonalDetailsModel.gmail}" readonly="readonly" name="fname" class="form-control">
+
+
+						</div>
+					</div>
+
+					
+
+					
+
+					
+
+					<div class="row p-2">
+						<div class="col-4">Symptoms</div>
+						<div class="col-6">
+							<input type="text" th:field="*{doctorPersonalDetailsModel.phonenumber}" readonly="readonly" name="address.city" class="form-control">
+						</div>
+					</div>
+					
+					
+				
+					
+
+			
+
+					
+				</form>
+				   <div class="row p-2">
+                   <div class="col-4"></div>
+                   <div class="col-6">
+                   <div class="leftAlign">
+                   <a href="/appointmentAcceptedList"> <input type="submit" value="Back"  class="btn btn-success btn-lg"></a>
+                   </div>
+                   </div>
+                   </div>
+
+			</div>
+			</div>
+			</div>
 
 
   <!-- end book section -->

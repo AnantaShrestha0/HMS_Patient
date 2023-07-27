@@ -66,7 +66,7 @@
               <div class="form-group col-lg-4">
                 <label for="inputDoctorName">Doctor's Name</label>
                 <select name="doctorId" class="form-control wide" id="inputDoctorName" required="required">
-
+                             <option value="">Select</option>
 							 <option th:each="doctor : ${doctorList}" th:value="${doctor.id}" th:text="${doctor.doctorPersonalDetailsModel.fullname}" ></option>
                 </select>
               </div>
@@ -82,15 +82,16 @@
             
               <div class="form-group col-lg-4">
                 <label for="inputPhone">Phone Number</label>
-                <input type="number" class="form-control" id="inputPhone" placeholder="XXXXXXXXXX" name="phonenumber">
+                <input type="number" class="form-control" id="inputPhone" placeholder="XXXXXXXXXX" name="phonenumber" required="required">
               </div>
               
                 <div class="form-group col-lg-4">
-                <label for="inputPatientName">Male Female</label>
+                <label for="inputPatientName">Gender</label>
                 <select name="gender" class="form-control wide" id="inputDoctorName" required="required">
-                              <option value=""></option>
+                              <option value="">Select</option>
 							 <option value="male">Male</option>
 							 <option value="female">Female</option>
+							 <option value="other">Other</option>
                 </select>
               </div>
               
@@ -98,7 +99,7 @@
                 <div class="form-group col-lg-4">
                 <label for="inputPatientName">Past Medical History</label>
                 <select name="passMedicalHistory" class="form-control wide" id="inputDoctorName" required="required">
-                              <option value=""></option>
+                              <option value="">Select</option>
 							 <option value="yes">YES</option>
 							 <option value="no">NO</option>
                 </select>
@@ -107,22 +108,22 @@
             
               <div class="form-group col-lg-4">
                 <label for="inputSymptoms">Symptoms</label>
-                <input type="text" class="form-control" id="inputSymptoms" placeholder="" name="symptoms">
+                <input type="text" class="form-control" id="inputSymptoms" placeholder="" name="symptoms" required="required">
               </div>
               
               <div class="form-group col-lg-4">
                 <label for="inputSymptoms">Blood Pressure</label>
-                <input type="text" class="form-control" id="inputSymptoms" placeholder="" name="bloodPressure">
+                <input type="text" class="form-control" id="inputSymptoms" placeholder="" name="bloodPressure" required="required">
               </div>
                <div class="form-group col-lg-4">
                 <label for="inputSymptoms">Age</label>
-                <input type="number" class="form-control" id="inputSymptoms" placeholder="" name="age">
+                <input type="number" class="form-control" id="inputSymptoms" placeholder="" name="age" required="required">
               </div>
               
               <div class="form-group col-lg-4">
                 <label for="inputDate">Choose Date </label>
                 <div class="input-group date" id="inputDate" data-date-format="mm-dd-yyyy">
-                  <input type="text" class="form-control" name="appointmentdate" readonly>
+                  <input type="text" class="form-control" name="appointmentdate" required="required">
                   <span class="input-group-addon date_icon">
                     <i class="fa fa-calendar" aria-hidden="true"></i>
                   </span>

@@ -77,7 +77,7 @@ public class PatientPageController {
 		PatientModel p=(PatientModel) httpSession.getAttribute("validuser");
 
 		List<AppointmentModel> appointment=appointmentService.getAllAppointmentRequestByPatient(p.getId());
-		model.addAttribute("appointmentlistindicator","active");
+		model.addAttribute("appointmentRequestListIndicator","active");
 		model.addAttribute("appointmentList",appointment );
 	//	model.addAttribute("patient",appointment);
 		

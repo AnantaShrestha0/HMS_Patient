@@ -29,9 +29,9 @@ public class ContactController {
 	@PostMapping("/contact")
 	public String postContact(@RequestParam String fullname,@RequestParam String email,@RequestParam String phonenumber,@RequestParam String message,HttpSession httpSession) {
 		
-		if(httpSession.getAttribute("validuser")==null) {
-			return "login";
-		}
+//		if(httpSession.getAttribute("validuser")==null) {
+//			return "login";
+//		}
 
 		String toEmail="anantashrestha45@gmail.com";
 		String Message="Full name : "+fullname+"\nEmail: "+email+"\nPhone Number: "+phonenumber+"\nMessage: "+message;
