@@ -43,8 +43,12 @@ public class PatientPageController {
 		if(httpSession.getAttribute("validuser")==null) {
 			return "login";
 		}
-		List<DoctorModel> doctorList=doctorRestController.getDoctorList();
-		
+		List<DoctorModel> doctorList=null;
+		try {
+		doctorList=doctorRestController.getDoctorList();
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
 	//	PatientModel p=(PatientModel) httpSession.getAttribute("validuser");
 		model.addAttribute("appointmentindicator","active");
 		model.addAttribute("doctorList",doctorList);

@@ -67,6 +67,7 @@
                 <label for="inputDoctorName">Doctor's Name</label>
                 <select name="doctorId" class="form-control wide" id="inputDoctorName" required="required">
                              <option value="">Select</option>
+                              <option th:unless="${doctorList}" value="">Server Down No Doctors Found</option>
 							 <option th:each="doctor : ${doctorList}" th:value="${doctor.id}" th:text="${doctor.doctorPersonalDetailsModel.fullname}" ></option>
                 </select>
               </div>

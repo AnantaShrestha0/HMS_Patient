@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.box.bookstore.model.PatientModel;
 import com.box.bookstore.service.PatientService;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
+
 
 @RestController
+@OpenAPIDefinition(info=@Info(title="Patient Rest Api",version ="Version 1",description = "Patient CRUD operaion"))
 public class PatientRestController {
 	
 	
